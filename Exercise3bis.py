@@ -59,7 +59,7 @@ account.print_balance()
 # Account Type: Pensiones
 # Current Balance: $1000.0
 
-account.deposit(1000)
+account.deposit(1001)
 # Deposited $500. New balance: $1500.0
 account.withdraw(500)
 # Withdrew $200. New balance: $1300.0
