@@ -31,6 +31,9 @@ class Deck:
 class EnglishDeck(Deck):
     def __init__(self):
         # TODO: Create a standard deck of 52 cards and shuffle them
+        suits = ['hearts', 'diamonds', 'clubs', 'spades' ]
+        values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Q', 'K', 'A'] 
+        super().__init__(suits, values)
         pass
 
 class Hand:
