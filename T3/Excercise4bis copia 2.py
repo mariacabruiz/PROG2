@@ -14,6 +14,7 @@ class Figure(ABC):
     def calculate_perimeter(self):
         pass
 
+
 class Square(Figure):
     def __init__(self, side=0):
         super().__init__()
@@ -57,7 +58,7 @@ class triangle(Figure):
         self.area = (math.sqrt(3)/ 4) * (self.side**2)
 
     def calculate_perimeter(self):
-        self.perimeter = self.side*3
+        self.perimeter = self.side * 3
 
 triangle = triangle(10)
 triangle.calculate_area()
