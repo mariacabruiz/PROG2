@@ -3,8 +3,9 @@ from tkinter import PhotoImage, messagebox
 import random
 
 class Card:
-    def __init__(self, suit: str, value: int):
+    def __init__(self, suit: str, value: str):
         # TODO: Initialize the attributes
+        self.suit = suitself.value = value
         pass
 
     def get_numeric_value(self) -> int:
@@ -16,9 +17,9 @@ class Card:
         pass
 
 class Deck:
-    def __init__(self):
+    def __init__(self, suits= [], values = []):
         # TODO: Initialize the deck
-        pass
+        self.cards = [Card(suit, value) for suit in suits for value in values]
 
     def shuffle(self):
         # TODO: Shuffle the cards
