@@ -5,7 +5,8 @@ import random
 class Card:
     def __init__(self, suit: str, value: str):
         # TODO: Initialize the attributes
-        self.suit = suitself.value = value
+        self.suit = suit
+        self.value = value
         pass
 
     def get_numeric_value(self) -> int:
@@ -20,14 +21,16 @@ class Deck:
     def __init__(self, suits= [], values = []):
         # TODO: Initialize the deck
         self.cards = [Card(suit, value) for suit in suits for value in values]
+        pass
 
     def shuffle(self):
         # TODO: Shuffle the cards
+        random.shuffle(self.cards)
         pass
 
     def deal(self)-> Card:
-        # TODO: Deal one card from the deck
-        pass
+        # TODO: Deal one card from the deck 
+        return
 
 class EnglishDeck(Deck):
     def __init__(self):
