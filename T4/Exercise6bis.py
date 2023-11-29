@@ -3,8 +3,8 @@ import random
 # Define the Card class
 class Card:
     def __init__(self, suit = str, value = str):
-        self.suit
-        self.value
+        self.suit = suit
+        self.value = value
 
     def __str__(self):
         return f"{self.value} of {self.suit}"
@@ -33,16 +33,15 @@ class Hand:
 # Define the Deck class
 class Deck:
     def __init__(self, suits = [], values = []):
-       # TODO
 
-    def deal(self, num_cards = int):
-        # TODO
+    def deal(self, num_cards):
+        dealt_cards = random.sample(self.cards, num_cards)
 
     def draw(self) -> Card:
         # TODO
 
     def shuffle(self) -> None:
-        # TODO
+        
 
 # Define the SpanishDeck class
 class SpanishDeck(Deck):
@@ -57,3 +56,4 @@ class EnglishDeck(Deck):
         suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
         values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
         super().__init__(suits, values)
+        pass
