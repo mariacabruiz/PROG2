@@ -20,3 +20,11 @@ def simulate_rolling_two_dice(num_rolls):
 
 # Simulate rolling two dice five times each
 simulate_rolling_two_dice(5)
+
+class Person:
+    def __init__(self, name, surname, age) :
+        self.name = name
+        self.surname = surname
+        self.age = age
+maria = Person("Maria", "Caballero", 25)
+print(maria.surname)
