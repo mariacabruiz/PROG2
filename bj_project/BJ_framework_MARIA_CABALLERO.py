@@ -73,6 +73,7 @@ class Player: # Class player, that contains the attributes name and hand
         pass
 
 class BlackjackGame: # Class BlackjackGame, that contains the attributes player, dealer and deck
+    def __init__(self):
         self.player = Player("Player")
         self.dealer = Player("Dealer")
         self.deck = EnglishDeck()
