@@ -1,0 +1,27 @@
+1. Create a class to represent a person. The class should have the following attributes: name, surname, age, address, and phone number. It should also have the following methods:
+    • Constructor: initializes the attributes with default values.
+    • Getters and setters: to access and modify the attributes.
+    • Method to print the person's information.
+2. Create a class to represent a car. The class should have the following attributes: make, model, colour, number of doors, and engine power. It should also have the following methods:
+    • Constructor: initializes the attributes with default values.
+    • Getters and setters: to access and modify the attributes.
+    • Method to print the car's information.
+3. Create a class to represent a bank account. The class should have the following attributes: account number, holder, balance, and account type. It should also have the following methods:
+    • Constructor: initializes the attributes with default values.
+    • Getters and setters: to access and modify the attributes.
+    • Method to deposit money.
+    • Method to withdraw money.
+    • Method to print the account balance.
+4. Create an abstract class Figure. The class should have the following attributes: area, and perimeter. Define methods to calculate the area and perimeter of a geometric figure. Create derived classes of Figure to represent the following types of geometric figures: circle, square, triangle.
+    a. Square. The class should have the following attributes: side. It should also have the following methods:
+        • Constructor: initializes the side attribute with a default value.
+        • Method to calculate the area of the square.
+        • Method to calculate the perimeter of the square.
+    b. Circle. The class should have the following attributes: radius. It should also have the following methods:
+        • Constructor: initializes the radius attribute with a default value.
+        • Method to calculate the area of the circle.
+        • Method to calculate the perimeter of the circle.
+    c. Triangle (equilateral). The class should have the following attributes: side. It should also have the following methods:
+        • Constructor: initializes the side attribute with a default value.
+        • Method to calculate the area of the triangle.
+        • Method to calculate the perimeter of the triangle.

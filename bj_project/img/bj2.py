@@ -2,122 +2,106 @@ import tkinter as tk
 from tkinter import PhotoImage, messagebox
 import random
 
-class Card: # Class card, that contains the attributes suit and value
-    def __init__(self, suit: str, value: int):
+class Card:
+    def __init__(self, suit: str, value: str):
         self.suit = suit
-        self.value = value        
-        pass
+        self.value = value
 
-    def get_numeric_value(self) -> int: # We define the value of the cards, the K, Q and J are 10, and the A is 11, the rest of the cards are the same value
-        if self.value in ['K', 'Q', 'J']:
+    def get_numeric_value(self) -> int:
+        if self.value.isdigit():
+            return int(self.value)
+        elif self.value in ['K', 'Q', 'J']:
             return 10
         elif self.value == 'A':
             return 11
         else:
-            return int(self.value)
-    pass
+            return 0
 
-    def get_image(self): # Here we are calling the images of the cards
-        return f"/img/{self.value}_of_{self.suit}.png"        
-    pass
+    def get_image(self):
+        image_path = f"{self.value}_of_{self.suit.lower()}.png"
+        print("Image path:", image_path)
+        return image_path
 
-class Deck: # Class deck, that contains the attributes cards, suits and values
-    def __init__(self, suits = [], values = []):
-        self.cards = []
-        for value in values:
-            for suit in suits:
-                self.cards.append(Card(suit,value))
-        pass
+class Deck:
+    def __init__(self, suits=[], values=[]):
+        self.cards = [Card(suit, value) for suit in suits for value in values]
 
-    def shuffle(self): # Here we are shuffling the cards
+    def shuffle(self):
         random.shuffle(self.cards)
-        pass
 
-    def deal(self)-> Card: # Here we are dealing the cards
-        if not self.cards:
-            raise ValueError("Deck is empty")
+    def deal(self) -> Card:
         return self.cards.pop()
-    pass
 
-class EnglishDeck(Deck): # Class EnglishDeck, from the class Deck, that contains the attributes suits and values
+class EnglishDeck(Deck):
     def __init__(self):
         suits = ['hearts', 'diamonds', 'clubs', 'spades']
         values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
         super().__init__(suits, values)
-        pass
+        self.shuffle()
 
-class Hand: # Class hand, that contains the attribute cards
+class Hand:
     def __init__(self):
         self.cards = []
-        pass
 
-    def add_card(self, card: Card): # Here we are adding the cards to the hand
+    def add_card(self, card: Card):
         self.cards.append(card)
-        pass
 
-    def value(self)->int: # Here we are defining the value of the cards, and the value of the A
-        total_value = sum(card.get_numeric_value() for card in self.cards)
+    def value(self) -> int:
+        hand_value = sum(card.get_numeric_value() for card in self.cards)
         num_aces = sum(1 for card in self.cards if card.value == 'A')
 
-        while total_value > 21 and num_aces: # Here we are defining the value of the A, if the value of the cards is over 21, the value of the A is 1
-            total_value -= 10
+        while num_aces > 0 and hand_value > 21:
+            hand_value -= 10
             num_aces -= 1
 
-        return total_value
-    pass
+        return hand_value
 
-class Player: # Class player, that contains the attributes name and hand
+class Player:
     def __init__(self, name):
         self.name = name
         self.hand = Hand()
-        pass
 
-class BlackjackGame: # Class BlackjackGame, that contains the attributes player, dealer and deck
+class BlackjackGame:
     def __init__(self):
         self.player = Player("Player")
         self.dealer = Player("Dealer")
         self.deck = EnglishDeck()
-        self.deck.shuffle()
-        pass
 
-    def start_game(self): # Here we are starting the game, and we are giving the cards to the player and the dealer
+    def start_game(self):
+        self.deck = EnglishDeck()
+        self.deck.shuffle()
         self.player.hand = Hand()
         self.dealer.hand = Hand()
 
-        for i in range (2): # Here we are giving the cards to the player and the dealer
+        for _ in range(2):
             self.player.hand.add_card(self.deck.deal())
             self.dealer.hand.add_card(self.deck.deal())
-        pass
 
-    def hit(self)-> bool: # Here we are giving the instructions that the player will follow, if the value of the cards of the player is over 21, it won't ask for more cards
+    def hit(self) -> bool:
         self.player.hand.add_card(self.deck.deal())
         return self.player.hand.value() > 21
-    pass
 
-    def dealer_hit(self) -> bool: # Here we are giving the instructions that the dealer will fllow, if the value of the cards of the dealer is over 17, it won't ask for more cards
+    def dealer_hit(self) -> bool:
         while self.dealer.hand.value() < 17:
             self.dealer.hand.add_card(self.deck.deal())
-        return self.dealer.hand.value() <= 21 
-    pass
+        return self.dealer.hand.value() <= 21
 
-    def determine_winner(self): # Here we are defining the winner of the game 
+    def determine_winner(self):
         player_value = self.player.hand.value()
         dealer_value = self.dealer.hand.value()
 
-        if player_value > 21: # If the value of the cards of the player is over 21, the dealer wins
+        if player_value > 21:
             return "You've busted! The house wins."
-
-        if dealer_value > 21: # If the value of the cards of the dealer is over 21, the player wins
-            return "Dealer busts! You win."
-
-        if player_value > dealer_value: # If the value of the cards of the player is over the value of the cards of the dealer, the player wins
-            return "You win!"
-        elif dealer_value > player_value: # If the value of the cards of the dealer is over the value of the cards of the player, the dealer wins
-            return "Dealer wins." 
+        elif dealer_value > 21 or player_value > dealer_value:
+            return "Congratulations! You win!"
+        elif player_value < dealer_value:
+            return "Sorry, you lose. The house wins."
         else:
             return "It's a tie!"
-    pass
 
+
+
+# The rest of the code remains unchanged
 # The GUI code is provided, so students don't need to modify it
 class BlackjackGUI:
     def __init__(self, game):
@@ -189,7 +173,7 @@ class BlackjackGUI:
         lbl.pack(side=tk.LEFT, padx=10)  # Center the last card horizontally a bit more
         
         # Deck in the middle
-        img = PhotoImage(file="/img/card_back_01.png")
+        img = PhotoImage(file="img/card_back_01.png")
         lbl = tk.Label(self.deck_frame, image=img, cursor="hand2")
         lbl.image = img
         lbl.pack(side=tk.TOP, padx=10)
@@ -227,7 +211,3 @@ if __name__ == "__main__":
     game_logic = BlackjackGame()
     app = BlackjackGUI(game_logic)
     app.run()
-
-
-
-    

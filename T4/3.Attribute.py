@@ -11,3 +11,5 @@ print(a.publicA)
 
 # Private attibute should NOT be accesible directly.
 print(a.__privateB)
+
+A(self.publicA) # No esta definido self (None)

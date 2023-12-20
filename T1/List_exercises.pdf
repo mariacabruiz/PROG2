@@ -1,0 +1,15 @@
+1. Sum of even numbers: Write a program that sums all the even numbers from 1 to 100.
+2. Factorial calculation: Create a function that calculates the factorial of a given number.
+3. Guess the number: Develop a game where the computer chooses a random number, and
+the player must guess it within a limited number of attempts.
+4. Word counter: Make a program that counts how many times each word appears in a given
+text.
+5. Shopping list: Create a shopping list where users can add and remove items and display the
+final list.
+6. BMI Calculator: Develop a Body Mass Index (BMI) calculator that takes a person's weight and
+height and calculates their BMI.
+7. Password generator: Create a program that generates random passwords of a length
+specified by the user.
+8. Dice simulator: Write a program that simulates the roll of two dice and calculates the sum of
+the values obtained.
+9. List sorting: Implement a sorting algorithm (such as bubble sort) to sort a list of numbers.

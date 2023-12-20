@@ -1,0 +1,83 @@
+Exercise 1
+    • Design in Python a class called Dice to simulate the behaviour of a standard six-sided die, ensuring that each face has an equal probability of being rolled.
+    • Develop a testing program that simulates rolling two dice five times each.
+
+Exercise 2
+    • Create a Point class with attributes for x and y coordinates. The class should include a constructor, getters and setters (properties), a method invert_coordinates() that swaps the x and y coordinates of the point, and a __str__() method to print the points in the format (x, y), and finally, a method distance_to() that calculates the distance to another point.
+    • Implement a test program where you create a point, print it using the __str__() method implicitly, print its x coordinate, set its x coordinate to 0, and then print the point again.
+
+Exercise 3
+    • Implement a class Rectangle defined by two Point objects, which, in addition to its constructor, will have two methods to calculate its area and perimeter, which you need to transform into properties.
+    • Implement a test that creates two points and a rectangle from these two points and displays the area and perimeter of that rectangle.
+
+Exercise 4
+    • Implement another class Die. By default, the die will have 6 faces. There will be three ways to construct a die (one that doesn’t receive anything and initializes the die randomly, one that only receives the number on the top face of the die, and one that receives both the number on the top face and the number of faces of the die). Implement the getters, the roll() method that rolls the die randomly, and the str().
+    • Implement a tester that has an array of 4 dice and rolls them a series of times.
+    
+Exercise 5
+• Implement the class Terminal. A terminal is associated with a phone number. Terminals can call each other, and the conversation time runs for both. Phone numbers need to be validated when creating the object (only digits, starting with 9, 6, or 7, and their length is nine digits).
+• Test the implementation of the class Terminal with the following program:
+     t1 = Terminal("666112233")
+     t2 = Terminal("666744459")
+     t3 = Terminal("632128919")
+     t4 = Terminal("664135818")
+     print(t1)
+     print(t2)
+     t1.call(t2, 420)
+     t1.call(t3, 210)
+     print(t1)
+     print(t2)
+     print(t3)
+     print(t4)
+Output:
+     666 11 22 33 - Conversation time: 0s
+     666 74 44 59 - Conversation time: 0s
+     666 11 22 33 - Conversation time: 630s
+     666 74 44 59 - Conversation time: 420s
+     632 12 89 19 - Conversation time: 210s
+     664 13 58 18 - Conversation time: 0s
+• Implement the class Mobile as a subclass of Terminal. Each mobile is associated with a rate. The possible rates are rat, monkey or elephant (you must control this). The cost per minute is 5, 15, and 30 cents, respectively. The calls are billed in seconds. The rate can be changed. Obviously, when one mobile calls another, the caller is charged, not the one who receives the call.
+• Implement the following program to test the class. The total cost should be displayed in two decimal places.
+     m1 = Mobile("666112233", "rat")
+     m2 = Mobile("666744459", "monkey")
+     m3 = Mobile("632128919", "elephant")
+     print(m1)
+     print(m2)
+     m1.call(m2, 210)
+     m1.call(m3, 320)
+     m2.call(m3, 450)
+     print(m1)
+     print(m2)
+     print(m3)
+
+Output:
+666112233- 0s of conversation - charged 0.00€ 666744459- 0s of conversation - charged 0.00€ 666 11 22 33 - 530s of conversation - charged 0.44€ 666 74 44 59 - 660s of conversation - charged 1.13€ 632 12 89 19 - 770s of conversation - charged 0.00€
+
+Exercise 6
+Create the following classes in Python:
+    • Card to simulate a playing card. A playing card has a suit (from a set of suits) and a value (from a set of values).
+    • Hand to simulate card-player hand, i.e., a set of playing cards that a player has. Players can draw a card from a deck. Once drawn, the player has one more card, and the deck has one less. They can discard a card. They can receive cards.
+    • Deck to simulate a deck of playing cards. Initially, it contains the cards that are provided with the constructor. It can deal a set of cards to a player. Those cards are removed from the deck. The first card can be taken from it (draw). It can be shuffled.
+    • Spanish and English decks (SpanishDeck and EnglishDeck) that inherit from Deck. Exercise 7
+In this exercise, you will be given the framework for a simple Blackjack game with a graphical user interface. Your task is to implement the logic for the game. The GUI code and the card images are already provided, so you will focus solely on the game’s logic.
+Here’s what you need to do: 
+• Card Class:
+    – Initialize the attributes for the suit and value of the card.
+    – Implement the method to get the numeric value of the card. – Implement the method to get the image path for the card.
+• Deck Class:
+    – Initialize an empty deck of cards.
+    – Implement the method to shuffle the deck. – Implement the method to deal a card.
+• EnglishDeck Class:
+    – It inherits from Deck class.
+    – Create a standard deck of 52 cards. – Shuffle the deck.
+• Hand Class:
+    – Initialize an empty hand.
+    – Implement the method to add a card to the hand.
+    – Implement the method to get the total value of the hand.
+• Player Class:
+    – Initialize the player’s attributes: name and hand.
+• BlackjackGame Class:
+    – Initialize the game’s attributes: an English deck, a player and a dealer.
+    – Implement the method to start a new game and deal two cards to each player. – Implement the method for the player to hit.
+    – Implement the method for the dealer to hit based on standard Blackjack rules. – Determine and return the winner of the game.
+Once you complete the logic, run the program to play the game through the GUI.
